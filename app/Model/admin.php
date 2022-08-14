@@ -38,10 +38,10 @@ class admin  extends Authenticatable implements JWTSubject
      */
     public static function checknumber($request)
     {
-        $student_job_number = $request['email'];
+        //$student_job_number = $request['email'];
         try{
-            $count = admin::select('email')
-                ->where('email',$student_job_number)
+            $count = self::select('email')
+                ->where('email',$request['email'])
                 ->count();
 
             return $count;
@@ -63,7 +63,7 @@ class admin  extends Authenticatable implements JWTSubject
                 false;
         } catch (\Exception $e) {
             logError('添加用户失败!', [$e->getMessage()]);
-            die($e->getMessage());
+            //die($e->getMessage());
             return false;
         }
     }
