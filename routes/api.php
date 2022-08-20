@@ -39,3 +39,6 @@ Route::prefix('admin')->group(function (){
 Route::middleware('role:admin')->prefix('admin')->group(function (){
 
 });//管理员端接口
+Route::post('find','admin\admincontroller@WrhFind');  //用户注册
+Route::post('find1','admin\admincontroller@WrhFind1');
+Route::post('find2','admin\admincontroller@WrhFind2');
