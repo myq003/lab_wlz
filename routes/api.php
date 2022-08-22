@@ -27,7 +27,7 @@ Route::prefix('users')->group(function (){
 });
 
 Route::middleware('role:user')->prefix('users')->group(function (){
-
+    Route::post('tem','test\temController@Zr_xxx');//ZLC 路由位置不要变
 });//学生端接口
 
 Route::prefix('admin')->group(function (){
@@ -39,3 +39,5 @@ Route::prefix('admin')->group(function (){
 Route::middleware('role:admin')->prefix('admin')->group(function (){
 
 });//管理员端接口
+
+
