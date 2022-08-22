@@ -24,6 +24,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::prefix('users')->group(function (){
     Route::post('login','userController@login');  //用户登录
     Route::post('registered','userController@registed');  //用户注册
+    Route::post('emails','student\studentController@email');//zlc email
+    Route::post('repassword','userController@repassword_zlc');//zlc email
 });
 
 Route::middleware('role:user')->prefix('users')->group(function (){
@@ -39,3 +41,4 @@ Route::prefix('admin')->group(function (){
 Route::middleware('role:admin')->prefix('admin')->group(function (){
 
 });//管理员端接口
+
