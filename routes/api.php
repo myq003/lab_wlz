@@ -41,3 +41,19 @@ Route::middleware('role:admin')->prefix('admin')->group(function (){
 });//管理员端接口
 
 
+
+Route::post('find','admin\adminController@Yjj_Find');
+Route::post('look','admin\adminController@Yjj_look');
+Route::post('examine','admin\adminController@Yjj_examine');
+Route::post('see','admin\adminController@Yjj_see');
+Route::post('saw','admin\adminController@YJJ_lianbiao');
+//Route::post('say','admin\adminController@Yjj_chauxn');
+Route::post('speed','admin\adminController@Yjj_speed');
+Route::post('sow','admin\adminController@Yjj_run');
+Route::post('src','admin\adminController@Yjj_sad');
+
+Route::post('find','admin\admincontroller@WrhFind');  //用户注册
+Route::post('find1','admin\admincontroller@WrhFind1');
+Route::post('find2','admin\admincontroller@WrhFind2');
+
+
