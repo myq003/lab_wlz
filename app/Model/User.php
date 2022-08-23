@@ -4,6 +4,7 @@
 namespace App\Model;
 
 
+use Illuminate\Support\Facades\DB;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 use Illuminate\Notifications\Notifiable;
@@ -83,4 +84,22 @@ class User extends Authenticatable implements JWTSubject
         }
     }
 
+    /**
+     * @param $email
+     * @return int
+     */
+        public static function  change_stateZLC($email){
+        $res=DB::table('users')->where('email',$email)->update([
+            'state'=>1
+        ]);
+        return $res;
+        }
+
+        public static function  repassword_zlc($email,$code_password){
+            $res=DB::table('users')->where('email',$email)->update([
+                'state'=>0,
+                'password'=>$code_password
+            ]);
+            return $res;
+        }
 }

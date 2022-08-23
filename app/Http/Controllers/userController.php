@@ -181,6 +181,16 @@ class userController extends Controller
         return $red;
     }
 
+    public  function repassword_zlc(Request $request){
+        $email=$request['email'];
+        $password=$request['password'];
+        $code_password=self::userHandle111($password);
+        $res=User::repassword_zlc($email,$code_password);
+        return $res ?
+            json_success('操作成功!', $email, 200):
+            json_fail('操作失败!', null, 100);
+    }
+
 
 
 

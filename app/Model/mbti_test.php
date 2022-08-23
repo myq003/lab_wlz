@@ -2,13 +2,46 @@
 
 namespace App\Model;
 
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
+
+
+use Illuminate\Database\Eloquent\Model;
+
+class mbti_test extends Model
+{
+    protected $table = 'mbti_test';
+    public $timestamps = true;
+    protected $guarded = [];
+
+    /**
+     * 查询霍兰德是否完成测评
+     * @param $email
+     * @return false
+     */
+    public static function Yjj_speeded($email){
+        try{
+            $cvb=self::select('mbti_state')->where('email',$email)->get();
+            return $cvb;
+        }catch (\Exception $e) {
+            logError('操作失败', [$e->getMessage()]);
+            return false;
+        }
+
+use http\Env\Request;
+use http\Message;
+use Illuminate\Database\Eloquent\Model;
+
 use Illuminate\Support\Facades\DB;
 use mysql_xdevapi\Table;
 
 class mbti_test extends Model
 {
+
+
+    //
+
     protected $table = "mbti_test";
     public $timestamps = true;
     protected $primaryKey = "id";
@@ -22,7 +55,7 @@ class mbti_test extends Model
             return  false;}
             $data1 = DB::table("mbti_test")->insert([
                  "email"=>$email,
-              "one_1"=>$req1,
+                  "one_1"=>$req1,
                "one_2"=>$req2,
                 "two_r" => $res[0],
                 "three_r" =>$res[1],
@@ -64,4 +97,22 @@ class mbti_test extends Model
 
     }
 
-}
+
+
+    public static function Wrh_Find1($email){
+        try{
+            $sum = DB::table('mbti_test')
+                ->join('mbti_answer',function ($join) {
+                    $join->on('mbti_test.mbti_result','=','mbti_answer.answer');
+                })
+                ->select('mbti_test.mbti_result','mbti_answer.details')
+                ->get();
+            return $sum;
+        }catch(\Exception $e){
+            logError('操作失败',[$e->getMessage()]);
+            return false;
+        }
+
+
+    }
+

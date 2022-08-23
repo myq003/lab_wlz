@@ -24,10 +24,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::prefix('users')->group(function (){
     Route::post('login','userController@login');  //用户登录
     Route::post('registered','userController@registed');  //用户注册
+    Route::post('emails','student\studentController@email');//zlc email
+    Route::post('repassword','userController@repassword_zlc');//zlc email
 });
 
 Route::middleware('role:user')->prefix('users')->group(function (){
+
     Route::post('mbti','test\mbtiController@SumR');
+
+    Route::post('tem','test\temController@Zr_xxx');//ZLC 路由位置不要变
+
 });//学生端接口
 
 Route::prefix('admin')->group(function (){
@@ -41,6 +47,28 @@ Route::middleware('role:admin')->prefix('admin')->group(function (){
 });//管理员端接口
 
 
+
+
+
+
+
+
+
+
+
+Route::post('find','admin\adminController@Yjj_Find');
+Route::post('look','admin\adminController@Yjj_look');
+Route::post('examine','admin\adminController@Yjj_examine');
+Route::post('see','admin\adminController@Yjj_see');
+Route::post('saw','admin\adminController@YJJ_lianbiao');
+//Route::post('say','admin\adminController@Yjj_chauxn');
+Route::post('speed','admin\adminController@Yjj_speed');
+Route::post('sow','admin\adminController@Yjj_run');
+Route::post('src','admin\adminController@Yjj_sad');
+
+Route::post('find','admin\admincontroller@WrhFind');  //用户注册
+Route::post('find1','admin\admincontroller@WrhFind1');
+Route::post('find2','admin\admincontroller@WrhFind2');
 
 
 
