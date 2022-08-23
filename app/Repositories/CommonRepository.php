@@ -166,7 +166,7 @@ abstract class CommonRepository
         if ($selects == '*') {
             $selects = $model->getColumns();
         }
-        return $model->select($selects)->paginate($pageSize);
+        return $model->select()->paginate($pageSize);
     }
 
 
@@ -183,6 +183,6 @@ abstract class CommonRepository
         if ($selects == '*') {
             $selects = $model->getColumns();
         }
-        return $model->select($selects)->where($where)->paginate($pageSize);
+        return $model->select()->where($where)->paginate($pageSize);
     }
 }

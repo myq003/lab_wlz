@@ -27,7 +27,7 @@ Route::prefix('users')->group(function (){
 });
 
 Route::middleware('role:user')->prefix('users')->group(function (){
-
+    Route::post('mbti','test\mbtiController@SumR');
 });//学生端接口
 
 Route::prefix('admin')->group(function (){
@@ -39,3 +39,8 @@ Route::prefix('admin')->group(function (){
 Route::middleware('role:admin')->prefix('admin')->group(function (){
 
 });//管理员端接口
+
+
+
+
+

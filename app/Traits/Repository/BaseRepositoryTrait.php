@@ -44,7 +44,7 @@ trait BaseRepositoryTrait
         if ($selects == '*') {
             $selects = $model->getColumns();
         }
-        return $model->select($selects)->find($id);
+        return $model->select()->find($id);
     }
 
     /**
@@ -98,7 +98,7 @@ trait BaseRepositoryTrait
             $selects = $model->getColumns();
 
         }
-        return $model->select($selects)->get();
+        return $model->select()->get();
     }
 
     /**
@@ -175,7 +175,7 @@ trait BaseRepositoryTrait
         if ($selects == '*') {
             $selects = $model->getColumns();
         }
-        return $model->select($selects)
+        return $model->select()
             ->orderBy($orderby[0], $orderby[1])
             ->skip($pageSize * ($pageNum - 1))
             ->take($pageSize)->get();
@@ -204,7 +204,7 @@ trait BaseRepositoryTrait
         if ($selects == '*') {
             $selects = $model->getColumns();
         }
-        return $model->select($selects)
+        return $model->select()
             ->where($where)
             ->orderBy($orderby[0], $orderby[1])->skip($pageSize * ($pageNum - 1))->take($pageSize)->get();
     }
@@ -233,7 +233,7 @@ trait BaseRepositoryTrait
         if ($selects == '*') {
             $selects = $model->getColumns();
         }
-        $res=$model->select($selects)
+        $res=$model->select()
             ->whereRaw($whereRaw);
             if(count($orderby)>0){
                 $res=$res->orderBy($orderby[0], $orderby[1]);
